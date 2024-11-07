@@ -24,6 +24,7 @@ interface Fields {
   Image: ImageField;
   Link: LinkField;
   Link2: LinkField;
+  ImageTransformation: Field<string>;
 }
 
 export type PromoCtaProps = ComponentProps & {
@@ -75,6 +76,9 @@ export const Default = (props: PromoCtaProps): JSX.Element => {
             <div className="image-wrapper">
               <DottedAccent className="dotted-accent-top" />
               <Image
+                imageParams={{
+                  t: props.fields.ImageTransformation.value,
+                }}
                 field={props.fields.Image}
                 className={`d-block mx-lg-auto img-fluid ${
                   !isPageEditing ? `fade-section ${isVisible ? 'is-visible' : ''}` : ''
